@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+class BloodData {
+    private String bloodType;
+    private String rhFactor;
+
+    public BloodData() {
+        bloodType = "A";
+        rhFactor = "-";
+    }
+
+    public BloodData(String bt, String rh) {
+        bloodType = bt;
+        rhFactor = rh;
+    }
+
+    public void setBloodType(String bt) {
+        bloodType = bt;
+    }
+
+    public void setRhFactor(String rh) {
+        rhFactor = rh;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public String getRhFactor() {
+        return rhFactor;
+    }
+
+    public void inputBloodInfo() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter Blood Type: ");
+        bloodType = input.nextLine();
+
+        System.out.print("Enter Rh Factor: ");
+        rhFactor = input.nextLine();
+    }
+
+    public void displayBloodInfo() {
+        System.out.println("Your blood type is: " + bloodType);
+        System.out.println("Your Rh Factor is: " + rhFactor);
+    }
+}
+
