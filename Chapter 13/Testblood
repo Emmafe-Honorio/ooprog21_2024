@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class TestBloodData {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create two BloodData objects
+        BloodData bloodData1 = new BloodData();
+        BloodData bloodData2 = new BloodData("A", "-");
+
+        // Display details of both objects
+        System.out.println("BloodData 1:");
+        displayBloodData(bloodData1);
+        System.out.println("BloodData 2:");
+        displayBloodData(bloodData2);
+
+        // Prompt user for values for bloodData1
+        System.out.println("\nEnter values for BloodData 1:");
+        System.out.print("Blood Type: ");
+        String bloodType = scanner.nextLine();
+        System.out.print("Rh Factor: ");
+        String rhFactor = scanner.nextLine();
+
+        // Set user-input values for bloodData1
+        bloodData1.setBloodType(bloodType);
+        bloodData1.setRhFactor(rhFactor);
+
+        // Display details of both objects again
+        System.out.println("\nBloodData 1:");
+        displayBloodData(bloodData1);
+        System.out.println("BloodData 2:");
+        
