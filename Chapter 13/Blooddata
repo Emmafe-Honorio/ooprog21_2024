@@ -1,0 +1,35 @@
+public class BloodData {
+    // String fields for blood type and Rh factor
+    private String bloodType;
+    private String rhFactor;
+
+    // Default constructor
+    public BloodData() {
+        this.bloodType = "O";
+        this.rhFactor = "+";
+    }
+
+    // Overloaded constructor
+    public BloodData(String bloodType, String rhFactor) {
+        this.bloodType = bloodType;
+        this.rhFactor = rhFactor;
+    }
+
+    // Getters and setters for bloodType
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    // Getters and setters for rhFactor
+    public String getRhFactor() {
+        return rhFactor;
+    }
+
+    public void setRhFactor(String rhFactor) {
+        this.rhFactor = rhFactor;
+    }
+}
