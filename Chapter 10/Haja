@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class TestLease {
+    public static void main(String[] args) {
+        // Declare four Lease objects
+        Lease lease1, lease2, lease3, lease4;
+
+        // Create objects and get data for the first three
+        lease1 = getData();
+        lease2 = getData();
+        lease3 = getData();
+
+        // Fourth lease object uses default constructor
+        lease4 = new Lease();
+
+        // Display values for all four objects
+        System.out.println("\n--- Lease 1 Details ---");
+        showValues(lease1);
+        System.out.println("\n--- Lease 2 Details ---");
+        showValues(lease2);
+        System.out.println("\n--- Lease 3 Details ---");
+        showValues(lease3);
+        System.out.println("\n--- Lease 4 Details (Default Values) ---");
+        showValues(lease4);
+
+        // Call addPetFee for lease1 and show values again
+        System.out.println("\nAdding pet fee to Lease 1...");
+        lease1.addPetFee();
+        System.out.println("\n--- Lease 1 Details (After Pet Fee) ---");
+        showValues(lease1);
+
+        // Confirm values for other objects remain unchanged
+        System.out.println("\n--- Confirming Other Lease Objects ---");
+        System.out.println("\n--- Lease 2 Details ---");
+        showValues(lease2);
+        System.out.println("\n--- Lease 3 Details ---");
+        showValues(lease3);
+        System.out.println("\n--- Lease 4 Details ---");
+        showValues(lease4);
+    }
+
+    // Method to get data from the user
+    public static Lease getData() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter tenant's name: ");
+        String name = input.nextLine();
+
+        System.out.print("Enter apartment number: ");
+        int apartmentNumber = input.nextInt();
+
+        System.out.print("Enter monthly rent: ");
+        double monthlyRent = input.nextDouble();
+
+        System.out.print("Enter lease term (in months): ");
+        int leaseTerm = input.nextInt();
+        input.nextLine(); // Clear buffer
+
+        // Create and return a new Lease object with user input
+        Lease newLease = new Lease();
+        newLease.setTenantName(name);
+        newLease.setApartmentNumber(apartmentNumber);
+        newLease.setMonthlyRent(monthlyRent);
+        newLease.setLeaseTerm(leaseTerm);
+
+        return newLease;
+    }
+
+    // Method to display Lease object values
+    public static void showValues(Lease lease) {
+        System.out.println("Tenant Name: " + lease.getTenantName());
+        System.out.println("Apartment Number: " + lease.getApartmentNumber());
+        System.out.println("Monthly Rent: $" + lease.getMonthlyRent());
+        System.out.println("Lease Term: " + lease.getLeaseTerm() + " months");
+    }
+}
