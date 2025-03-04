@@ -1,0 +1,114 @@
+Here’s the Java implementation using arrays instead of HashMap:
+
+import java.util.Scanner;
+
+class PhoneDirectory {
+    private String[] names;
+    private String[] phoneNumbers;
+    private int size;
+
+    public PhoneDirectory() {
+        names = new String[30];         // Array to store names
+        phoneNumbers = new String[30];  // Array to store phone numbers
+        size = 0;                       // Tracks the number of stored contacts
+    }
+
+    public void addContact(String name, String phone) {
+        if (size < 30) {
+            names[size] = name;
+            phoneNumbers[size] = phone;
+            size++;
+            System.out.println("Contact " + name + " added.");
+        } else {
+            System.out.println("Directory is full. Cannot add more contacts.");
+        }
+    }
+
+    public String getPhone(String name) {
+        for (int i = 0; i < size; i++) {
+            if (names[i].equalsIgnoreCase(name)) {
+                return phoneNumbers[i];
+            }
+        }
+        return null;  // Return null if name is not found
+    }
+
+    public int getSize() {
+        return size;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PhoneDirectory phonebook = new PhoneDirectory();
+        Scanner scanner = new Scanner(System.in);
+
+        // Pre-populate with 10 contacts
+        String[][] initialContacts = {
+            {"Alice", "123-456-7890"}, {"Bob", "234-567-8901"},
+            {"Charlie", "345-678-9012"}, {"David", "456-789-0123"},
+            {"Eve", "567-890-1234"}, {"Frank", "678-901-2345"},
+            {"Grace", "789-012-3456"}, {"Hank", "890-123-4567"},
+            {"Ivy", "901-234-5678"}, {"Jack", "012-345-6789"}
+        };
+
+        for (String[] contact : initialContacts) {
+            phonebook.addContact(contact[0], contact[1]);
+        }
+
+        while (phonebook.getSize() < 30) {
+            System.out.print("Enter a name (or 'quit' to exit): ");
+            String name = scanner.nextLine().trim();
+
+            if (name.equalsIgnoreCase("quit")) {
+                break;
+            }
+
+            String phone = phonebook.getPhone(name);
+            if (phone != null) {
+                System.out.println(name + "'s phone number: " + phone);
+            } else {
+                System.out.print(name + " not found. Enter phone number to add: ");
+                String newPhone = scanner.nextLine().trim();
+                phonebook.addContact(name, newPhone);
+            }
+        }
+
+        if (phonebook.getSize() == 30) {
+            System.out.println("Phone directory is full. No more contacts can be added.");
+        }
+
+        scanner.close();
+    }
+}
+
+Explanation:
+
+1. Class PhoneDirectory:
+
+Uses two parallel arrays (names[] and phoneNumbers[]) to store contacts.
+
+Uses size to keep track of the number of entries.
+
+addContact() adds new contacts to the arrays.
+
+getPhone() searches for a contact and returns the phone number if found.
+
+
+
+2. Main Program (Main):
+
+Pre-populates the directory with 10 initial contacts.
+
+Continuously prompts the user for a name.
+
+If the name is found, it displays the phone number.
+
+If not found, it prompts the user to enter a phone number and adds the new contact.
+
+Stops when the user enters "quit" or the directory reaches 30 entries.
+
+
+
+
+Would you like any modifications or explanations?
