@@ -1,0 +1,173 @@
+Below is a Java version that does not use the this keyword anywhere. The main changes from a typical approach are in the Student constructor and setters/getters, where we avoid using this.
+
+import java.util.Scanner;
+
+class Student {
+    // Fields (no "this" used)
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String course;
+    private int yearLevel;
+
+    // Constructor without using "this"
+    public Student(int sid, String fName, String lName, String c, int yLevel) {
+        id = sid;
+        firstName = fName;
+        lastName = lName;
+        course = c;
+        yearLevel = yLevel;
+    }
+
+    // Setters (avoid using "this")
+    public void setId(int sid) {
+        id = sid;
+    }
+
+    public void setFirstName(String fName) {
+        firstName = fName;
+    }
+
+    public void setLastName(String lName) {
+        lastName = lName;
+    }
+
+    public void setCourse(String c) {
+        course = c;
+    }
+
+    public void setYearLevel(int yLevel) {
+        yearLevel = yLevel;
+    }
+
+    // Getters (straightforward, no "this")
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public int getYearLevel() {
+        return yearLevel;
+    }
+
+    // Display student details (no "this")
+    public void displayStudent() {
+        System.out.println("ID: " + id + ", Name: " + firstName + " " + lastName
+                + ", Course: " + course + ", Year Level: " + yearLevel);
+    }
+}
+
+public class StudentManager {
+    // Array of Student objects
+    private static Student[] students = new Student[100];  
+    // Counter for how many Student objects are currently in the array
+    private static int studentCount = 0;                   
+
+    // Method to add a student (no "this")
+    public static void addStudent(Scanner scanner) {
+        if (studentCount >= 100) {
+            System.out.println("Student record limit reached. Cannot add more students.");
+            return;
+        }
+
+        System.out.print("Enter Student ID: ");
+        int idInput = scanner.nextInt();
+        scanner.nextLine(); // Consume the leftover newline
+
+        System.out.print("Enter First Name: ");
+        String fNameInput = scanner.nextLine();
+
+        System.out.print("Enter Last Name: ");
+        String lNameInput = scanner.nextLine();
+
+        System.out.print("Enter Course: ");
+        String courseInput = scanner.nextLine();
+
+        System.out.print("Enter Year Level: ");
+        int yearInput = scanner.nextInt();
+        scanner.nextLine(); // Consume the leftover newline
+
+        // Create new Student (no "this")
+        Student newStudent = new Student(idInput, fNameInput, lNameInput, courseInput, yearInput);
+
+        // Store in array
+        students[studentCount] = newStudent;
+        studentCount++;
+
+        System.out.println("Student added successfully!\n");
+    }
+
+    // Method to display all students (no "this")
+    public static void displayAllStudents() {
+        if (studentCount == 0) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        System.out.println("Student Records:");
+        for (int i = 0; i < studentCount; i++) {
+            students[i].displayStudent();
+        }
+    }
+
+    // Method to display students in reverse order (no "this")
+    public static void displayAllStudentsReverse() {
+        if (studentCount == 0) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        System.out.println("Student Records in Reverse Order:");
+        for (int i = studentCount - 1; i >= 0; i--) {
+            students[i].displayStudent();
+        }
+    }
+
+    // Main method (no "this")
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Add New Student");
+            System.out.println("2. Display All Students");
+            System.out.println("3. Display All Students in Reverse");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    addStudent(scanner);
+                    break;
+                case 2:
+                    displayAllStudents();
+                    break;
+                case 3:
+                    displayAllStudentsReverse();
+                    break;
+                case 0:
+                    System.out.println("Exiting program. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
+    }
+}
+
