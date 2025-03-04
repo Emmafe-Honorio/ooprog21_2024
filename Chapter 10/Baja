@@ -1,0 +1,166 @@
+Here’s a Python implementation of the problem statement:
+
+class PhoneDirectory:
+    def __init__(self):
+        self.directory = {}  # Dictionary to store name-phone pairs
+
+    def add_contact(self, name, phone):
+        if len(self.directory) < 30:
+            self.directory[name] = phone
+            print(f"Contact {name} added.")
+        else:
+            print("Directory is full. Cannot add more contacts.")
+
+    def get_phone(self, name):
+        return self.directory.get(name, None)
+
+def main():
+    phonebook = PhoneDirectory()
+
+    # Pre-populate with 10 contacts
+    initial_contacts = {
+        "Alice": "123-456-7890",
+        "Bob": "234-567-8901",
+        "Charlie": "345-678-9012",
+        "David": "456-789-0123",
+        "Eve": "567-890-1234",
+        "Frank": "678-901-2345",
+        "Grace": "789-012-3456",
+        "Hank": "890-123-4567",
+        "Ivy": "901-234-5678",
+        "Jack": "012-345-6789",
+    }
+
+    for name, phone in initial_contacts.items():
+        phonebook.add_contact(name, phone)
+
+    while len(phonebook.directory) < 30:
+        name = input("Enter a name (or 'quit' to exit): ").strip()
+        if name.lower() == 'quit':
+            break
+
+        phone = phonebook.get_phone(name)
+        if phone:
+            print(f"{name}'s phone number: {phone}")
+        else:
+            new_phone = input(f"{name} not found. Enter phone number to add: ").strip()
+            phonebook.add_contact(name, new_phone)
+
+    if len(phonebook.directory) == 30:
+        print("Phone directory is full. No more contacts can be added.")
+
+if __name__ == "__main__":
+    main()
+
+Explanation:
+
+1. Class Definition (PhoneDirectory):
+
+Uses a dictionary to store contacts.
+
+add_contact() adds a new entry if there's space.
+
+get_phone() retrieves a phone number if the name exists.
+
+
+
+2. Main Program (main()):
+
+Initializes the directory with 10 predefined contacts.
+
+Prompts the user for a name.
+
+If found, it displays the phone number.
+
+If not found, it prompts the user to enter a phone number and adds the new contact.
+
+Stops when the user enters "quit" or the directory reaches 30 entries.
+
+
+
+
+Would you like any modifications or explanations?
+
+Here’s a Python implementation of the problem statement:
+
+class PhoneDirectory:
+    def __init__(self):
+        self.directory = {}  # Dictionary to store name-phone pairs
+
+    def add_contact(self, name, phone):
+        if len(self.directory) < 30:
+            self.directory[name] = phone
+            print(f"Contact {name} added.")
+        else:
+            print("Directory is full. Cannot add more contacts.")
+
+    def get_phone(self, name):
+        return self.directory.get(name, None)
+
+def main():
+    phonebook = PhoneDirectory()
+
+    # Pre-populate with 10 contacts
+    initial_contacts = {
+        "Alice": "123-456-7890",
+        "Bob": "234-567-8901",
+        "Charlie": "345-678-9012",
+        "David": "456-789-0123",
+        "Eve": "567-890-1234",
+        "Frank": "678-901-2345",
+        "Grace": "789-012-3456",
+        "Hank": "890-123-4567",
+        "Ivy": "901-234-5678",
+        "Jack": "012-345-6789",
+    }
+
+    for name, phone in initial_contacts.items():
+        phonebook.add_contact(name, phone)
+
+    while len(phonebook.directory) < 30:
+        name = input("Enter a name (or 'quit' to exit): ").strip()
+        if name.lower() == 'quit':
+            break
+
+        phone = phonebook.get_phone(name)
+        if phone:
+            print(f"{name}'s phone number: {phone}")
+        else:
+            new_phone = input(f"{name} not found. Enter phone number to add: ").strip()
+            phonebook.add_contact(name, new_phone)
+
+    if len(phonebook.directory) == 30:
+        print("Phone directory is full. No more contacts can be added.")
+
+if __name__ == "__main__":
+    main()
+
+Explanation:
+
+1. Class Definition (PhoneDirectory):
+
+Uses a dictionary to store contacts.
+
+add_contact() adds a new entry if there's space.
+
+get_phone() retrieves a phone number if the name exists.
+
+
+
+2. Main Program (main()):
+
+Initializes the directory with 10 predefined contacts.
+
+Prompts the user for a name.
+
+If found, it displays the phone number.
+
+If not found, it prompts the user to enter a phone number and adds the new contact.
+
+Stops when the user enters "quit" or the directory reaches 30 entries.
+
+
+
+
+Would you like any modifications or explanations?
+
